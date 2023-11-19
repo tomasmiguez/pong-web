@@ -3,8 +3,11 @@
 <head>
   <title>Console Log Button</title>
   <script src='script.js'></script>
-  <script>
-    window.onload = getResourceCount('ping');
+  <script type='text/javascript'>
+    window.addEventListener('load', function() {
+      getResourceCount('ping');
+      setupWebsocket('ping');
+    });
   </script>
 </head>
 
