@@ -3,6 +3,9 @@
 <head>
   <title>Console Log Button</title>
   <script src='script.js'></script>
+  <script>
+    window.onload = getResourceCount('ping');
+  </script>
 </head>
 
 <body>
@@ -11,5 +14,8 @@
   </nav>
   <br>
   <button onclick="pong()">PONG</button>
+  <br>
+  <br>
+  <div id="pingCount"></div>
 </body>
 </html>
