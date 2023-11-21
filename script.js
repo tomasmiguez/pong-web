@@ -24,7 +24,12 @@ async function getResourceCount(resName) {
   try {
     const response = await fetch('http://localhost:8080/' + resName);
     const data = await response.json();
-    setResourceCount(resName, data.count);
+
+    if (data.error) {
+      setResourceCount(resName, data.error);
+    } else {
+      setResourceCount(resName, data.count);
+    }
   } catch (error) {
     console.error('Error fetching ' + resName + ' count:', error);
   }
@@ -49,4 +54,14 @@ function setupWebsocket(resName) {
           setResourceCount(resName, dataJson.newCount);
         }
       };
+}
+
+async function registerServiceWorker() {
+  if ('serviceWorker' in navigator) {
+    try {
+      await navigator.serviceWorker.register('/sw.js', { scope: '/' });
+    } catch (error) {
+      console.error('Failed to register service worker:', error);
+    }
+  }
 }

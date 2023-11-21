@@ -5,6 +5,7 @@
   <script src='script.js'></script>
   <script type='text/javascript'>
     window.addEventListener('load', function() {
+      registerServiceWorker();
       getResourceCount('pong');
       setupWebsocket('pong');
     });
